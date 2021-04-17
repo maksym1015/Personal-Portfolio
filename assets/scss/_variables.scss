@@ -1,0 +1,67 @@
+// Primary Colors
+$blue: #04b4e0;
+$dark: #222;
+$dark_light: #444;
+$light_grey: #b5b6b7;
+$dark_gray: #aaa;
+$light_gray: #d5d5d5;
+$white: #fff;
+
+// Mixins
+$breakpoints: (
+    "phone":        400px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+    "tablet-wide":  1024px,
+    "desktop":      1200px,
+    "desktop-wide": 1440px
+);
+@mixin mq($width, $type: max) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == min {
+            $width: $width + 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin heading1() {
+  font-weight: 600;
+  font-size: 48px;
+}
+@mixin heading2() {
+  font-weight: 600;
+  font-size: 36px;
+  @include mq('tablet') {
+    font-size: 30px;
+  }
+}
+@mixin heading3() {
+  font-weight: 600;
+  font-size: 21px;
+}
+@mixin heading4() {
+  font-weight: 300;
+  font-size: 18px;
+}
+@mixin bodyText($size) {
+  @if $size == large {
+    font-size: 18px;
+    line-height: 28px;
+    @include mq('tablet') {
+      font-size: 15px;
+    }
+    @include mq('phablet') {
+      font-size: 18px;
+    }
+  }
+  @else if $size == small {
+    font-size: 15px;
+    line-height: 25px;
+  }
+}
