@@ -2,7 +2,7 @@
 *   This is stylesheet for index.html
 *
 */
-@import "_variables.scss";
+@import "./variables";
 
 // Typography
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,400&display=swap");
@@ -549,9 +549,9 @@ p {
   // Client
   .client {
     &-slider__item {
-      margin-right: 15px;
+      margin-right: 30px;
       img {
-        width: 145px;
+        width: auto;
         height: 43px;
       }
     }
